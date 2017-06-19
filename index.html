@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+
+<!--
+Happy Father's Day
+-->
+
+<!--
+open http://localhost:8080
+livereload ~/fathersDay/ -p 8080
+
+ios
+-->
+
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<title>Happy Father's Day</title>
+<meta name="description" content="Father's Day">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+</head>
+
+<style>
+html {
+  font-size: 2.5vw;
+  font-family: sans-serif;
+}
+
+body {
+color: #357EDD;
+background-color: #E8FDF5;
+font-family: sans-serif;
+}
+
+.btn {
+    background-color: Transparent;
+    background-repeat:no-repeat;
+    border: none;
+    outline: none;
+    padding: 0.75em 1.25em;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 2rem;
+    font-weight: 900;
+    margin: 0.2rem 0.1rem;
+    -webkit-transition-duration: 0.1s; /* Safari */
+    transition-duration: 0.1s;
+    cursor: pointer;
+    color: #357EDD;
+}
+
+.cent {
+  text-align: center;
+  position: fixed;
+  display: block;
+  bottom: 2vmax;
+  left: 10vw;
+  left: calc(50vw - 12rem);
+}
+
+.picCent {
+  position: fixed;
+  display: block;
+  left: calc(50vw - 40vw);
+  cursor: pointer;
+}
+
+.w80 {
+  width: 80vw;
+  max-width: 500px;
+}
+
+@media (min-width: 625px) {
+  .picCent {
+    position: fixed;
+    display: block;
+    left: calc(50vw - 250px);
+  }
+  html {
+    font-size: 15.625px;
+    font-family: sans-serif;
+  }
+}
+
+@keyframes heady {
+    0%, 100% {
+        -webkit-transform: translateY(0vmax);
+                transform: translateY(0vmax);
+    }
+    50% {
+        -webkit-transform: translateY(-2vmax);
+                transform: translateY(-2vmax);
+    }
+}
+/*@-webkit-keyframes */
+
+
+@keyframes mouthy {
+    0%, 100% {
+        -webkit-transform: translateY(0vmax);
+                transform: translateY(0vmax);
+    }
+    50% {
+        -webkit-transform: translateY(2vmax);
+                transform: translateY(2vmax);
+    }
+}
+/*@-webkit-keyframes */
+
+
+@keyframes roty {
+  0%, 50%, 100% {
+      -webkit-transform: rotate(0deg);
+              transform: rotate(0deg);
+  }
+  25% {
+      -webkit-transform: rotate(-25deg);
+              transform: rotate(-25deg);
+  }
+  75% {
+      -webkit-transform: rotate(25deg);
+              transform: rotate(25deg);
+  }
+}
+
+@-webkit-keyframes roty {
+    0%, 50%, 100% {
+        -webkit-transform: rotate(0deg);
+                transform: rotate(0deg);
+    }
+    25% {
+        -webkit-transform: rotate(-25deg);
+                transform: rotate(-25deg);
+    }
+    75% {
+        -webkit-transform: rotate(25deg);
+                transform: rotate(25deg);
+    }
+}
+/*@-webkit-keyframes */
+
+.headA {
+  /*-webkit-transform: rotate(0deg);
+          transform: rotate(0deg);*/
+  -webkit-animation-name: heady;
+          animation-name: heady;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+  -webkit-animation-timing-function: ease;
+          animation-timing-function: ease;
+  -webkit-animation-duration: 2330.096ms;
+          animation-duration: 2330.096ms;
+  -webkit-animation-play-state: paused;
+          animation-play-state: paused;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+}
+
+.mouthA {
+  /*-webkit-transform: rotate(0deg);
+          transform: rotate(0deg);*/
+  -webkit-animation-name: mouthy;
+          animation-name: mouthy;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+  -webkit-animation-timing-function: ease;
+          animation-timing-function: ease;
+  -webkit-animation-duration: 2330.096ms;
+          animation-duration: 2330.096ms;
+  -webkit-animation-play-state: paused;
+          animation-play-state: paused;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+}
+
+.rot {
+  /*-webkit-transform: rotate(0deg);
+          transform: rotate(0deg);*/
+  -webkit-animation-name: roty;
+          animation-name: roty;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+  -webkit-animation-timing-function: ease;
+          animation-timing-function: ease;
+  -webkit-animation-duration: 9320.384ms;
+          animation-duration: 9320.384ms;
+  -webkit-animation-play-state: paused;
+          animation-play-state: paused;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+}
+
+</style>
+
+<body>
+  <div id="rot" class="rot">
+  <img id="img1" src="media/head.png" class="w80 picCent headA" onclick="playToggle()">
+  <img id="img2" src="media/mouth.png" class="w80 picCent mouthA" onclick="playToggle()">
+  </div>
+  <input class="btn cent" type="button" value="Happy Father's Day!" onclick="sayIt()">
+  <audio id="song" src="media/flyAway.mp3" />
+<script>
+
+var img1 = document.getElementById('img1');
+var img2 = document.getElementById('img2');
+var rot = document.getElementById('rot');
+var song = document.getElementById('song');
+
+var synth = window.speechSynthesis;
+var words = "Happy Fathers Day";
+
+// BPM 103
+// 4n = 1.717 hz || 582.524 ms || 0.583 s
+
+var utterThis = new SpeechSynthesisUtterance(words);
+
+function sayIt() {
+	var rand = Math.random() + Math.random();
+	utterThis.pitch = rand;
+  utterThis.rate = rand;
+  if (synth.speaking === false){
+  	synth.speak(utterThis);
+  }
+}
+
+if (!window.hasOwnProperty("AudioContext") && window.hasOwnProperty("webkitAudioContext")){
+  window.AudioContext = window.webkitAudioContext;
+  }
+var audioContext =  new AudioContext();
+var volume = audioContext.createGain();
+var bark = 'media/bark.mp3';
+
+getSample(bark, function play(buffer) {
+  // save buffer in global var for later use
+  temp = buffer;
+  woofDuration = temp.duration * 1000;
+});
+
+function getSample(url, cb) {
+
+// if possible, use the Fetch API,
+// so that a serviceWorker can cache the page
+
+  if("fetch" in window) {
+  fetch(url).then(function(response) {
+  return response.arrayBuffer()
+}).then(function(arrayBuffer) {
+  audioContext.decodeAudioData(arrayBuffer, cb);
+});
+}  else {
+    var request = new XMLHttpRequest();
+    request.open('GET', url);
+    request.responseType = 'arraybuffer';
+    request.onload = function() {
+      audioContext.decodeAudioData(request.response, cb);
+      request.send();
+    };
+  }
+}
+
+
+
+
+var init = 0;
+var woofing = 0;
+//var isPaused = audioOrVideo.paused
+
+
+
+function playToggle() {
+  if (init === 0) {
+    song.currentTime = 19.940;
+    song.play();
+    anim();
+    init = 1;
+  }
+  else if (woofing === 0) {
+    // bark
+    var rate = getRandomArbitrary(0.8, 1.2);
+    woofing = 1;
+    var woofer = audioContext.createBufferSource();
+    woofer.playbackRate = rate;
+    woofer.buffer = temp;
+    woofer.connect(volume);
+    volume.gain.value = 0.8;
+    volume.connect(audioContext.destination);
+    woofer.start();
+    setTimeout(woofEnd, woofDuration);
+  }
+   else if (woofing === 1) {
+  }
+}
+
+function getRandomArbitrary(min, max) {
+  return Math.random() * (max - min) + min;
+}
+
+function woofEnd(){
+  woofing = 0;
+}
+
+function anim() {
+  img1.style.WebkitAnimationPlayState = "running";
+  img1.style.animationPlayState = "running";
+  img2.style.WebkitAnimationPlayState = "running";
+  img2.style.animationPlayState = "running";
+  rot.style.WebkitAnimationPlayState = "running";
+  rot.style.animationPlayState = "running";
+}
+
+
+
+
+
+
+</script>
+</body>
+</html>
