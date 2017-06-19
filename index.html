@@ -83,6 +83,17 @@ font-family: sans-serif;
   }
 }
 
+@-webkit-keyframes heady {
+    0%, 100% {
+        -webkit-transform: translateY(0vmax);
+                transform: translateY(0vmax);
+    }
+    50% {
+        -webkit-transform: translateY(-2vmax);
+                transform: translateY(-2vmax);
+    }
+}
+
 @keyframes heady {
     0%, 100% {
         -webkit-transform: translateY(0vmax);
@@ -93,8 +104,17 @@ font-family: sans-serif;
                 transform: translateY(-2vmax);
     }
 }
-/*@-webkit-keyframes */
 
+@-webkit-keyframes mouthy {
+    0%, 100% {
+        -webkit-transform: translateY(0vmax);
+                transform: translateY(0vmax);
+    }
+    50% {
+        -webkit-transform: translateY(2vmax);
+                transform: translateY(2vmax);
+    }
+}
 
 @keyframes mouthy {
     0%, 100% {
@@ -105,23 +125,6 @@ font-family: sans-serif;
         -webkit-transform: translateY(2vmax);
                 transform: translateY(2vmax);
     }
-}
-/*@-webkit-keyframes */
-
-
-@keyframes roty {
-  0%, 50%, 100% {
-      -webkit-transform: rotate(0deg);
-              transform: rotate(0deg);
-  }
-  25% {
-      -webkit-transform: rotate(-25deg);
-              transform: rotate(-25deg);
-  }
-  75% {
-      -webkit-transform: rotate(25deg);
-              transform: rotate(25deg);
-  }
 }
 
 @-webkit-keyframes roty {
@@ -138,11 +141,24 @@ font-family: sans-serif;
                 transform: rotate(25deg);
     }
 }
-/*@-webkit-keyframes */
+
+@keyframes roty {
+  0%, 50%, 100% {
+      -webkit-transform: rotate(0deg);
+              transform: rotate(0deg);
+  }
+  25% {
+      -webkit-transform: rotate(-25deg);
+              transform: rotate(-25deg);
+  }
+  75% {
+      -webkit-transform: rotate(25deg);
+              transform: rotate(25deg);
+  }
+}
+
 
 .headA {
-  /*-webkit-transform: rotate(0deg);
-          transform: rotate(0deg);*/
   -webkit-animation-name: heady;
           animation-name: heady;
   -webkit-animation-fill-mode: forwards;
@@ -158,8 +174,6 @@ font-family: sans-serif;
 }
 
 .mouthA {
-  /*-webkit-transform: rotate(0deg);
-          transform: rotate(0deg);*/
   -webkit-animation-name: mouthy;
           animation-name: mouthy;
   -webkit-animation-fill-mode: forwards;
@@ -175,8 +189,6 @@ font-family: sans-serif;
 }
 
 .rot {
-  /*-webkit-transform: rotate(0deg);
-          transform: rotate(0deg);*/
   -webkit-animation-name: roty;
           animation-name: roty;
   -webkit-animation-fill-mode: forwards;
