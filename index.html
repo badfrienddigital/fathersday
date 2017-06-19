@@ -289,10 +289,10 @@ function playToggle() {
   }
   else if (woofing === 0) {
     // bark
-    var rate = getRandomArbitrary(0.8, 1.2);
+    var rate = Math.random() * (1.1 - 0.92) + 0.92;
     woofing = 1;
     var woofer = audioContext.createBufferSource();
-    woofer.playbackRate = rate;
+    woofer.playbackRate.value = rate;
     woofer.buffer = temp;
     woofer.connect(volume);
     volume.gain.value = 0.8;
@@ -302,10 +302,6 @@ function playToggle() {
   }
    else if (woofing === 1) {
   }
-}
-
-function getRandomArbitrary(min, max) {
-  return Math.random() * (max - min) + min;
 }
 
 function woofEnd(){
